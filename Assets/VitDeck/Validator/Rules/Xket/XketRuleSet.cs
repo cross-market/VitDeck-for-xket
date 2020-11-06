@@ -21,19 +21,6 @@ namespace VitDeck.Validator
         private readonly Vket5TargetFinder targetFinder = new Vket5TargetFinder();
         public IValidationTargetFinder TargetFinder => targetFinder;
 
-        private readonly IObjectDetector officialPrefabsDetector;
-
-        public XketRuleSet() : base()
-        {
-            officialPrefabsDetector = new PrefabPartsDetector(
-                Vket5OfficialAssetData.AudioSourcePrefabGUIDs,
-                Vket5OfficialAssetData.AvatarPedestalPrefabGUIDs,
-                Vket5OfficialAssetData.ChairPrefabGUIDs,
-                Vket5OfficialAssetData.PickupObjectSyncPrefabGUIDs,
-                Vket5OfficialAssetData.CanvasPrefabGUIDs,
-                Vket5OfficialAssetData.PointLightProbeGUIDs);
-        }
-
         public IRule[] GetRules()
         {
             // デフォルトで使っていたAttribute式は宣言時にconst以外のメンバーが利用できない。
@@ -44,23 +31,9 @@ namespace VitDeck.Validator
 
                 new UnityVersionRule(LocalizedMessage.Get("Vket5RuleSetBase.UnityVersionRule.Title", "2018.4.20f1"), "2018.4.20f1"),
 
-                new VRCSDKVersionRule(LocalizedMessage.Get("Vket5RuleSetBase.VRCSDKVersionRule.Title"),
-                    new VRCSDKVersion("2020.05.06.12.14"),
-                    "https://files.vrchat.cloud/sdk/VRCSDK2-2020.09.15.11.25_Public.unitypackage"),
-
                 new ExistInSubmitFolderRule(LocalizedMessage.Get("Vket5RuleSetBase.ExistInSubmitFolderRule.Title"), Vket5OfficialAssetData.GUIDs, targetFinder),
 
                 new AssetGuidBlacklistRule(LocalizedMessage.Get("Vket5RuleSetBase.OfficialAssetDontContainRule.Title"), Vket5OfficialAssetData.GUIDs),
-
-                new AssetNamingRule(LocalizedMessage.Get("Vket5RuleSetBase.NameOfFileAndFolderRule.Title"), @"[a-zA-Z0-9 _\.\-\(\)]+"),
-
-                new AssetPathLengthRule(LocalizedMessage.Get("Vket5RuleSetBase.FilePathLengthLimitRule.Title", 184), 184),
-
-                new AssetExtentionBlacklistRule(LocalizedMessage.Get("Vket5RuleSetBase.MeshFileTypeBlacklistRule.Title"),
-                                                new string[]{".ma", ".mb", "max", "c4d", ".blend"}
-                ),
-
-                new ContainMatOrTexInAssetRule(LocalizedMessage.Get("Vket5RuleSetBase.ContainMatOrTexInAssetRule.Title")),
 
                 new FolderSizeRule(LocalizedMessage.Get("Vket5RuleSetBase.FolderSizeRule.Title"), FolderSizeLimit),
 
@@ -77,15 +50,9 @@ namespace VitDeck.Validator
                     lightmapCountLimit: LightmapCountLimit,
                     lightmapResolutionLimit: 512),
 
-                new GlobalIlluminationBakedRule(LocalizedMessage.Get("Vket5RuleSetBase.GlobalIlluminationBakedRule.Title")),
-
                 new UsableComponentListRule(LocalizedMessage.Get("Vket5RuleSetBase.UsableComponentListRule.Title"),
                     GetComponentReferences(),
                     ignorePrefabGUIDs: Vket5OfficialAssetData.GUIDs),
-
-                new SkinnedMeshRendererRule(LocalizedMessage.Get("Vket5RuleSetBase.SkinnedMeshRendererRule.Title")),
-
-                new MeshRendererRule(LocalizedMessage.Get("Vket5RuleSetBase.MeshRendererRule.Title")),
 
                 new ReflectionProbeRule(LocalizedMessage.Get("Vket5RuleSetBase.ReflectionProbeRule.Title")),
 
@@ -103,8 +70,6 @@ namespace VitDeck.Validator
                             VRCTriggerActionWhitelist,
                             Vket5OfficialAssetData.GUIDs),
 
-                new UseMeshColliderRule(LocalizedMessage.Get("Vket5RuleSetBase.UseMeshColliderRule.Title")),
-
                 new VRCTriggerCountLimitRule(LocalizedMessage.Get("Vket5RuleSetBase.VRCTriggerCountLimitRule.Title", VRCTriggerCountLimit), VRCTriggerCountLimit),
 
                 new LightCountLimitRule(LocalizedMessage.Get("Vket5RuleSetBase.DirectionalLightLimitRule.Title"), UnityEngine.LightType.Directional, 0),
@@ -115,27 +80,7 @@ namespace VitDeck.Validator
 
                 new LightConfigRule(LocalizedMessage.Get("Vket5RuleSetBase.AreaLightConfigRule.Title"), UnityEngine.LightType.Area, ApprovedAreaLightConfig),
 
-                new AnimationMakesMoveCollidersRule(LocalizedMessage.Get("Vket5RuleSetBase.AnimationMakesMoveCollidersRule.Title")),
-
-                new AnimationClipRule(LocalizedMessage.Get("Vket5RuleSetBase.AnimationClipRule.Title")),
-
-                new AnimationComponentRule(LocalizedMessage.Get("Vket5RuleSetBase.AnimationComponentRule.Title"), officialPrefabsDetector),
-
-                new AnimatorComponentRule(LocalizedMessage.Get("Vket5RuleSetBase.AnimatorComponentRule.Title"),
-                    new System.Type[]{
-                        typeof(VRC_Pickup),
-                        typeof(VRC_ObjectSync)
-                    },officialPrefabsDetector),
-
                 new CanvasRenderModeRule(LocalizedMessage.Get("Vket5RuleSetBase.CanvasRenderModeRule.Title")),
-
-                new CameraComponentRule(LocalizedMessage.Get("Vket5RuleSetBase.CameraComponentRule.Title"), maxRenderTextureSize: new Vector2(1024, 1024)),
-
-                new CameraComponentMaxCountRule(LocalizedMessage.Get("Vket5RuleSetBase.CameraComponentMaxCountRule.Title"), limit: 1),
-
-                new ProjectorComponentRule(LocalizedMessage.Get("Vket5RuleSetBase.ProjectorComponentRule.Title")),
-
-                new ProjectorComponentMaxCountRule(LocalizedMessage.Get("Vket5RuleSetBase.ProjectorComponentMaxCountRule.Title"), limit: 1),
 
                 new PickupObjectSyncPrefabRule(LocalizedMessage.Get("Vket5RuleSetBase.PickupObjectSyncRule.Title"), Vket5OfficialAssetData.PickupObjectSyncPrefabGUIDs),
 
@@ -146,25 +91,9 @@ namespace VitDeck.Validator
                 new RigidbodyRule(LocalizedMessage.Get("Vket5RuleSetBase.RigidbodyRule.Title")),
 
                 new PrefabLimitRule(
-                    LocalizedMessage.Get("Vket5RuleSetBase.ChairPrefabLimitRule.Title", ChairPrefabUsesLimit),
-                    Vket5OfficialAssetData.ChairPrefabGUIDs,
-                    ChairPrefabUsesLimit),
-
-                new PrefabLimitRule(
-                    LocalizedMessage.Get("Vket5RuleSetBase.UnusabePrefabRule.Title", ChairPrefabUsesLimit),
-                    Vket5OfficialAssetData.VRCSDKPrefabGUIDs,
-                    0),
-
-                new PrefabLimitRule(
                     LocalizedMessage.Get("Vket5RuleSetBase.PickupObjectSyncPrefabLimitRule.Title", PickupObjectSyncUsesLimit),
                     Vket5OfficialAssetData.PickupObjectSyncPrefabGUIDs,
                     PickupObjectSyncUsesLimit),
-
-                new VideoPlayerComponentRule(LocalizedMessage.Get("Vket5RuleSetBase.VideoPlayerComponentRule.Title")),
-
-                new VideoPlayerComponentMaxCountRule(LocalizedMessage.Get("Vket5RuleSetBase.VideoPlayerComponentMaxCountRule.Title"), limit: 1),
-
-                new AnimatorComponentMaxCountRule(LocalizedMessage.Get("Vket5RuleSetBase.AnimatorComponentMaxCountRule.Title"), limit: 50)
 #endif
             };
         }
@@ -280,9 +209,6 @@ namespace VitDeck.Validator
         protected LightConfigRule.LightConfig ApprovedAreaLightConfig
             => new LightConfigRule.LightConfig(new[] { LightmapBakeType.Baked });
 
-        protected int ChairPrefabUsesLimit => 0;
-
         protected int PickupObjectSyncUsesLimit => 5;
-
     }
 }
