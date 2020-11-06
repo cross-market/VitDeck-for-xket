@@ -41,6 +41,12 @@ namespace VitDeck.Validator
 
                 new StaticFlagRule(LocalizedMessage.Get("Vket5RuleSetBase.StaticFlagsRule.Title")),
 
+                new AssetExtentionBlacklistRule("アセット拡張子ルール", new []{
+                    ".shader", ".cginc", ".shadervariants",
+                    ".cs", ".asmdef", ".dll", ".com", ".exe", ".bat", ".cmd", ".vbs", ".vbe", ".js", ".jse", ".wsf", ".wsh", ".lnk",
+                    ".asf", ".avi", ".dv", ".m4v", ".mov", ".mp4", ".mpg", ".mpeg", ".ogv", ".vp8", ".webm", ".wmv",
+                    }),
+
                 new BoothBoundsRule(LocalizedMessage.Get("Vket5RuleSetBase.BoothBoundsRule.Title"),
                     size: BoothSizeLimit,
                     margin: 0.01f),
