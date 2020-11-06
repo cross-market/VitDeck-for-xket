@@ -46,9 +46,9 @@ namespace VitDeck.Validator
                     margin: 0.01f),
 
                 new LightmapSizeLimitRule(
-                    LocalizedMessage.Get("Vket5RuleSetBase.LightMapsLimitRule.Title", LightmapCountLimit, 512),
+                    LocalizedMessage.Get("Vket5RuleSetBase.LightMapsLimitRule.Title", LightmapCountLimit, 256),
                     lightmapCountLimit: LightmapCountLimit,
-                    lightmapResolutionLimit: 512),
+                    lightmapResolutionLimit: 256),
 
                 new UsableComponentListRule(LocalizedMessage.Get("Vket5RuleSetBase.UsableComponentListRule.Title"),
                     GetComponentReferences(),
