@@ -1,5 +1,6 @@
 // 当ファイルは Assets/VitDeck/Validator/Rules/Vket5/Vket5RuleSetBase.cs をコピーして改変したもの
 
+using System;
 using UnityEngine;
 using VitDeck.Language;
 
@@ -64,15 +65,7 @@ namespace VitDeck.Validator
 
                 new VRCTriggerConfigRule(LocalizedMessage.Get("Vket5RuleSetBase.VRCTriggerConfigRule.Title"),
                             VRCTriggerBroadcastTypesWhitelist,
-                            new VRC_Trigger.TriggerType[] {
-                                VRC_Trigger.TriggerType.Custom,
-                                VRC_Trigger.TriggerType.OnInteract,
-                                VRC_Trigger.TriggerType.OnEnterTrigger,
-                                VRC_Trigger.TriggerType.OnExitTrigger,
-                                VRC_Trigger.TriggerType.OnPickup,
-                                VRC_Trigger.TriggerType.OnDrop,
-                                VRC_Trigger.TriggerType.OnPickupUseDown,
-                                VRC_Trigger.TriggerType.OnPickupUseUp   },
+                            (VRC_Trigger.TriggerType[])Enum.GetValues(typeof(VRC_Trigger.TriggerType)),
                             VRCTriggerActionWhitelist,
                             Vket5OfficialAssetData.GUIDs),
 
@@ -114,31 +107,15 @@ namespace VitDeck.Validator
             get
             {
                 return new VRC_EventHandler.VrcBroadcastType[]{
-                    VRC_EventHandler.VrcBroadcastType.Local };
+                    VRC_EventHandler.VrcBroadcastType.Local,
+                    VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
+                    VRC_EventHandler.VrcBroadcastType.MasterUnbuffered,
+                    VRC_EventHandler.VrcBroadcastType.OwnerUnbuffered };
             }
         }
 
         protected virtual VRC_EventHandler.VrcEventType[] VRCTriggerActionWhitelist
-        {
-            get
-            {
-                return new VRC_EventHandler.VrcEventType[] {
-                    VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
-                    VRC_EventHandler.VrcEventType.AudioTrigger,
-                    VRC_EventHandler.VrcEventType.PlayAnimation,
-                    VRC_EventHandler.VrcEventType.SetParticlePlaying,
-                    VRC_EventHandler.VrcEventType.SetComponentActive,
-                    VRC_EventHandler.VrcEventType.SetGameObjectActive,
-                    VRC_EventHandler.VrcEventType.AnimationBool,
-                    VRC_EventHandler.VrcEventType.AnimationFloat,
-                    VRC_EventHandler.VrcEventType.AnimationInt,
-                    VRC_EventHandler.VrcEventType.AnimationIntAdd,
-                    VRC_EventHandler.VrcEventType.AnimationIntDivide,
-                    VRC_EventHandler.VrcEventType.AnimationIntMultiply,
-                    VRC_EventHandler.VrcEventType.AnimationIntSubtract,
-                    VRC_EventHandler.VrcEventType.AnimationTrigger};
-            }
-        }
+            => (VRC_EventHandler.VrcEventType[])Enum.GetValues(typeof(VRC_EventHandler.VrcEventType));
 #endif
 
         protected int VRCTriggerCountLimit => 10;
