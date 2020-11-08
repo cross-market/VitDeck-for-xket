@@ -42,9 +42,9 @@ namespace VitDeck.Validator
                     "https://id.pokemori.jp/cross-market2/circles.xhtml"
                 ),
 
-                new ExistInSubmitFolderRule(LocalizedMessage.Get("Vket5RuleSetBase.ExistInSubmitFolderRule.Title"), Vket5OfficialAssetData.GUIDs, targetFinder),
+                new ExistInSubmitFolderRule(LocalizedMessage.Get("Vket5RuleSetBase.ExistInSubmitFolderRule.Title"), XketAssetData.GUIDs, targetFinder),
 
-                new AssetGuidBlacklistRule(LocalizedMessage.Get("Vket5RuleSetBase.OfficialAssetDontContainRule.Title"), Vket5OfficialAssetData.GUIDs),
+                new AssetGuidBlacklistRule(LocalizedMessage.Get("Vket5RuleSetBase.OfficialAssetDontContainRule.Title"), XketAssetData.GUIDs),
 
                 new FolderSizeRule(LocalizedMessage.Get("Vket5RuleSetBase.FolderSizeRule.Title"), FolderSizeLimit),
 
