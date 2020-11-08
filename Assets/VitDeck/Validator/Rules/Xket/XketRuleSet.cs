@@ -106,6 +106,8 @@ namespace VitDeck.Validator
                     Vket5OfficialAssetData.PickupObjectSyncPrefabGUIDs,
                     PickupObjectSyncUsesLimit),
 
+                new SpriteSizeLimitRule("スプライト画像の解像度制限ルール", resolutionLimit: 256),
+
                 new ErrorShaderRule("エラーシェーダールール"),
 
                 new ShaderWhitelistRule("シェーダーホワイトリストルール", new Dictionary<string, string>()
