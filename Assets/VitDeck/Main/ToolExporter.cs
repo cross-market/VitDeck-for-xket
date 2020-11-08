@@ -23,8 +23,8 @@ namespace VitDeck.Main
             |.+/Tests/.+|
             |TestUtilities(/.+)?
             |Templates/Sample_template(/.+)?
-            |Validator/Rules/Sample(/.+)?
-            |Config/(UserSettings\.asset|DefaultExportSetting.*\.asset)
+            |Validator/Rules/(Sample(/.+)?|Vket5/.+RuleSet\.cs)
+            |Config/(UserSettings\.asset|(DefaultExportSetting|Vket).*\.asset)
         )$", RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
 
         [MenuItem("VitDeck/Export VitDeck", false, 201)]
