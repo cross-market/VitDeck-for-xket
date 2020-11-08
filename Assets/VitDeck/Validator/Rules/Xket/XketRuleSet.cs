@@ -1,6 +1,7 @@
 // 当ファイルは Assets/VitDeck/Validator/Rules/Vket5/Vket5RuleSetBase.cs をコピーして改変したもの
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using VitDeck.Language;
 
@@ -94,6 +95,57 @@ namespace VitDeck.Validator
                     LocalizedMessage.Get("Vket5RuleSetBase.PickupObjectSyncPrefabLimitRule.Title", PickupObjectSyncUsesLimit),
                     Vket5OfficialAssetData.PickupObjectSyncPrefabGUIDs,
                     PickupObjectSyncUsesLimit),
+
+                new ErrorShaderRule("エラーシェーダールール"),
+
+                new ShaderWhitelistRule("シェーダーホワイトリストルール", new Dictionary<string, string>()
+                {
+                    { "TextMeshPro/Mobile/Distance Field", "fe393ace9b354375a9cb14cdbbc28be4" },
+                    { "VRChat/Mobile/Bumped Diffuse", "f8c1f8ac363df824899534a0b30eef00" },
+                    { "VRChat/Mobile/Bumped Mapped Specular", "584dc70fbb9834e48beb29e3206e3ca0" },
+                    { "VRChat/Mobile/Diffuse", "2dcd9e0568e0a6f45b92c60ba2eb16a0" },
+                    { "VRChat/Mobile/Lightmapped", "b1f7ecc80417c414b9d62ce541d5bcbf" },
+                    { "VRChat/Mobile/MatCap Lit", "3ad043b7f9839cb48a75a9238d433dec" },
+                    { "VRChat/Mobile/Particles/Additive", "9200bec112b65ec4fbbbd33fa89c20f4" },
+                    { "VRChat/Mobile/Particles/Multiply", "d5b89f0c74ccf5049ba803c14a090378" },
+                    { "VRChat/Mobile/Skybox", "c0d3cb006bb294142bef136f492f2568" },
+                    { "VRChat/Mobile/Standard Lite", "0b7113dea2069fc4e8943843eff19f70" },
+                    { "VRChat/Mobile/Toon Lit", "affc81f3d164d734d8f13053effb1c5c" },
+                    { "VRChat/Panosphere", "1278163a2a3ba2b4cad540a862292784" },
+                    { "UniGLTF/NormalMapDecoder", "53762a37d0a403e42a4921e3e3b84915" },
+                    { "UniGLTF/NormalMapEncoder", "3e39586253f31b34f87fa7e133449b1e" },
+                    { "UniGLTF/StandardVColor", "5ef7bdb14a8f23043805e41692d10787" },
+                    { "UniGLTF/UniUnlit", "8c17b56f4bf084c47872edcb95237e4a" },
+                    { "VRM/MToon", "1a97144e4ad27a04aafd70f7b915cedb" },
+                    { "VRM/UnlitCutout", "4c9ce97af40038f45811fc4b0975a483" },
+                    { "VRM/UnlitTexture", "1a70c9898704e1a4691843883f5101af" },
+                    { "VRM/UnlitTransparent", "df359ad0838642d4fa0339514fcbbb2d" },
+                    { "VRM/UnlitTransparentZWrite", "429a3203ab2959741aab76fa2856b450" },
+                    { "UnlitWF/UnToon_Mobile/WF_UnToon_Mobile_Texture", "4bd76f6599a5b8e4d88d81300fb74c37" },
+                    { "UnlitWF/UnToon_Mobile/WF_UnToon_Mobile_TransCutout", "af3422dc9372a89449a9f44d409d9714" },
+                    { "UnlitWF/UnToon_Mobile/WF_UnToon_Mobile_Transparent", "0a7a6cdca16a38548a5d81aca8d4e3ba" },
+                    { "UnlitWF/UnToon_Mobile/WF_UnToon_Mobile_TransparentOverlay", "4e4be4aab63a2bd4fbcea2390ae92fdf" },
+                    { "MMS3/Mnmrshader3", "8dd7c14dadb834c4e8324f7d08c5674e" },
+                    { "MMS3/Mnmrshader3_Cutout", "128f4720891e8914ab7e6673099df0f0" },
+                    { "MMS3/Mnmrshader3_Outline", "fbaec084851cef64fbd877b3b15716cb" },
+                    { "MMS3/Mnmrshader3_Transparent", "fda424b70f79d4e5488e1cc3ee100a95" },
+                    { "MMS3/Stencil/MMS3_Reader ", "f889d00a055a0488e9ecbf22c558ae76" },
+                    { "MMS3/Stencil/MMS3_Writer", "f55508f2ed8cc477f9574099971bc4eb" },
+                    { "UnityChanToonShader/Mobile/Toon_DoubleShadeWithFeather", "1d10c7840eb6ba74c889a27f14ba6081" },
+                    { "UnityChanToonShader/Mobile/Toon_DoubleShadeWithFeather_Clipping", "88791c14394118d42a5e176b433af322" },
+                    { "UnityChanToonShader/Mobile/Toon_DoubleShadeWithFeather_Clipping_StencilMask", "41f4ee183cb66ad40bc74a9f8f944974" },
+                    { "UnityChanToonShader/Mobile/Toon_DoubleShadeWithFeather_StencilMask", "dec01cbdbc5b8da4ca8671815cda1557" },
+                    { "UnityChanToonShader/Mobile/Toon_DoubleShadeWithFeather_StencilOut", "55e8b9eeaaff205469365133fe7bc744" },
+                    { "UnityChanToonShader/Mobile/Toon_DoubleShadeWithFeather_TransClipping", "d4c592285a93c3844aafdaafffc07ec7" },
+                    { "UnityChanToonShader/Mobile/Toon_DoubleShadeWithFeather_TransClipping_StencilMask", "100d373b596f44d49ac9bb944d671d32" },
+                    { "UnityChanToonShader/Mobile/AngelRing/Toon_ShadingGradeMap", "23e399973d807464fb195291a44a614c" },
+                    { "UnityChanToonShader/Mobile/AngelRing/Toon_ShadingGradeMap_StencilOut", "8d33e4e4084e5af449f3e762fecce3c9" },
+                    { "UnityChanToonShader/Mobile/Toon_ShadingGradeMap", "f90e11a40dcf4f745ae6b21b857943fa" },
+                    { "UnityChanToonShader/Mobile/Toon_ShadingGradeMap_StencilMask", "206c554c8b0c60041a9d242385f543d3" },
+                    { "UnityChanToonShader/Mobile/Toon_ShadingGradeMap_StencilOut", "cfc201757f2519c4bb6ef9265a046582" },
+                    { "UnityChanToonShader/Mobile/Toon_ShadingGradeMap_TransClipping", "cce1da34c52aff745adf0222f56a356c" },
+                    { "UnityChanToonShader/Mobile/Toon_ShadingGradeMap_TransClipping_StencilMask", "e88039bab21b7894e918126e8fce5d1b" },
+                }, "ブース入稿規定の使用可能シェーダーをご参照ください。", "https://id.pokemori.jp/cross-market2/#shaders"),
 #endif
             };
         }
