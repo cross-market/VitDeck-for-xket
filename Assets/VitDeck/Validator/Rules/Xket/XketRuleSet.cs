@@ -145,6 +145,10 @@ namespace VitDeck.Validator
                     { "UnityChanToonShader/Mobile/Toon_ShadingGradeMap_StencilOut", "cfc201757f2519c4bb6ef9265a046582" },
                     { "UnityChanToonShader/Mobile/Toon_ShadingGradeMap_TransClipping", "cce1da34c52aff745adf0222f56a356c" },
                     { "UnityChanToonShader/Mobile/Toon_ShadingGradeMap_TransClipping_StencilMask", "e88039bab21b7894e918126e8fce5d1b" },
+                    // ゲーミング波紋シェーダー
+                    // <https://noriben.booth.pm/items/1205481>
+                    { "Noriben/CircleLED", "5f94a00059794d8469e1ec8b94e48a09" },
+                    { "Noriben/FlowLED", "bc6048cc78f66194a8e162f2d79ba974" },
                 }, "ブース入稿規定の使用可能シェーダーをご参照ください。", "https://id.pokemori.jp/cross-market2/#shaders"),
 #endif
             };
