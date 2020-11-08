@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using System.IO;
 using VitDeck.Utilities;
 using UnityEngine.Networking;
 
@@ -11,14 +12,22 @@ namespace VitDeck.Main
     /// <summary>
     public static class JsonReleaseInfo
     {
-        private static string releaseUrl = "";
+        internal static readonly string VitDeckRootPath = "Assets/VitDeck";
+        internal static readonly string JsonReleaseInfoPath = "ReleaseInfo.json";
+        private static readonly string ReleaseBranchName = "develop";
         private static string version = null;
         private static string packageName = null;
         private static string downloadUrl = null;
 
         public static string GetReleaseUrl()
         {
-            return releaseUrl;
+            return Path.Combine(
+                ProductInfoUtility.GetDeveloperLinkURL()
+                    .Replace("https://github.com/", "https://raw.githubusercontent.com/"),
+                JsonReleaseInfo.ReleaseBranchName,
+                JsonReleaseInfo.VitDeckRootPath,
+                JsonReleaseInfo.JsonReleaseInfoPath
+            );
         }
 
         public static string GetVersion()
