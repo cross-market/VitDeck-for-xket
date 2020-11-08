@@ -61,9 +61,9 @@ namespace VitDeck.Validator
                 {
                     AddIssue(new Issue(
                         gameObject,
-                        IssueLevel.Warning,
+                        IssueLevel.Error,
                         LocalizedMessage.Get("StaticFlagRule.BatchingStaticNotSet"),
-                        LocalizedMessage.Get("StaticFlagRule.BatchingStaticNotSet.Solution")));
+                        "必ずBatchingStaticを有効にして下さい。"));
                 }
                 
                 if ((flag & StaticEditorFlags.OccluderStatic) != 0)
