@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using VitDeck.Language;
@@ -68,7 +69,8 @@ namespace VitDeck.Validator
 
                 new UsableComponentListRule(LocalizedMessage.Get("Vket5RuleSetBase.UsableComponentListRule.Title"),
                     GetComponentReferences(),
-                    ignorePrefabGUIDs: Vket5OfficialAssetData.GUIDs,
+                    ignorePrefabGUIDs: Vket5OfficialAssetData.GUIDs
+                        .Except(Vket5OfficialAssetData.CanvasPrefabGUIDs).ToArray(),
                     unregisteredComponent: ValidationLevel.DISALLOW),
 
                 new ReflectionProbeRule(LocalizedMessage.Get("Vket5RuleSetBase.ReflectionProbeRule.Title")),
