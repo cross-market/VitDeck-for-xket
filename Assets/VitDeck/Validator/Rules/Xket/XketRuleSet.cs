@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using VitDeck.Language;
 
@@ -32,6 +33,13 @@ namespace VitDeck.Validator
 #if VRC_SDK_VRCSDK2
 
                 new UnityVersionRule(LocalizedMessage.Get("Vket5RuleSetBase.UnityVersionRule.Title", "2018.4.20f1"), "2018.4.20f1"),
+
+                new BaseFolderPathRule(
+                    "ベースフォルダパスルール",
+                    new Regex("^Assets/2[01][0-9][0-9]$"),
+                    "Base Folderは、入稿ツールによってAssets直下へ作成された、半角数字4桁のサークルIDのフォルダです。なお、サークルIDは、右のHelpボタンから飛べる出展サークル一覧ページで確認できます。",
+                    "https://id.pokemori.jp/cross-market2/circles.xhtml"
+                ),
 
                 new ExistInSubmitFolderRule(LocalizedMessage.Get("Vket5RuleSetBase.ExistInSubmitFolderRule.Title"), Vket5OfficialAssetData.GUIDs, targetFinder),
 
