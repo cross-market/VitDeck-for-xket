@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a780f2801beb823448f3c902970fc314, type: 3}
+  m_Name: XketExportSetting
+  m_EditorClassIdentifier: 
+  SettingName: "\u30AF\u30ED\u30B9\u30DE\u30FC\u30B1\u30C3\u30C82\u5165\u7A3F\u30D1\u30C3\u30B1\u30FC\u30B8"
+  Description: "Assets/Xket2_Exports \u30D5\u30A9\u30EB\u30C0\u3078 unitypackage \u304C\u51FA\u529B\u3055\u308C\u307E\u3059\u3002\n\u51FA\u529B\u3055\u308C\u305F
+    unitypackage \u3092\u5165\u7A3F\u30D5\u30A9\u30FC\u30E0\u304B\u3089\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+  ExportFolderPath: Assets/Xket2_Exports
+  fileNameFormat: CrossMarket2_{SHA-1}.unitypackage
+  ruleSetName: XketRuleSet
+  ignoreValidationWarning: 0
