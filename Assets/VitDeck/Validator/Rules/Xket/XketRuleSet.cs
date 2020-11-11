@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using VitDeck.Language;
@@ -69,8 +68,7 @@ namespace VitDeck.Validator
 
                 new UsableComponentListRule(LocalizedMessage.Get("Vket5RuleSetBase.UsableComponentListRule.Title"),
                     GetComponentReferences(),
-                    ignorePrefabGUIDs: Vket5OfficialAssetData.GUIDs
-                        .Except(Vket5OfficialAssetData.CanvasPrefabGUIDs).ToArray(),
+                    ignorePrefabGUIDs: Vket5OfficialAssetData.GUIDs,
                     unregisteredComponent: ValidationLevel.DISALLOW),
 
                 new ReflectionProbeRule(LocalizedMessage.Get("Vket5RuleSetBase.ReflectionProbeRule.Title")),
@@ -105,8 +103,6 @@ namespace VitDeck.Validator
                     LocalizedMessage.Get("Vket5RuleSetBase.PickupObjectSyncPrefabLimitRule.Title", PickupObjectSyncUsesLimit),
                     Vket5OfficialAssetData.PickupObjectSyncPrefabGUIDs,
                     PickupObjectSyncUsesLimit),
-
-                new SpriteSizeLimitRule("スプライト画像の解像度制限ルール", resolutionLimit: 256),
 
                 new ErrorShaderRule("エラーシェーダールール"),
 
@@ -224,6 +220,7 @@ namespace VitDeck.Validator
                     "UnityEngine.UI.Dropdown",
                     "UnityEngine.UI.Dropdown+DropdownItem",
                     "UnityEngine.UI.GraphicRaycaster",
+                    "UnityEngine.UI.Image",
                     "UnityEngine.UI.InputField",
                     "UnityEngine.UI.Mask",
                     "UnityEngine.UI.RawImage",
@@ -254,6 +251,7 @@ namespace VitDeck.Validator
                     "UnityEngine.Tilemaps.TilemapRenderer",
                     "UnityEngine.Terrain",
                     "UnityEngine.Tree",
+                    "UnityEngine.SpriteMask",
                     "UnityEngine.ParticleEmitter",
                     "UnityEngine.EllipsoidParticleEmitter",
                     "UnityEngine.MeshParticleEmitter",
@@ -312,6 +310,7 @@ namespace VitDeck.Validator
                     "UnityEngine.LightProbeProxyVolume",
                     "UnityEngine.LODGroup",
                     "UnityEngine.ReflectionProbe",
+                    "UnityEngine.SpriteRenderer",
                     "UnityEngine.Transform",
                     "UnityEngine.RectTransform",
                     "UnityEngine.Rendering.SortingGroup",
