@@ -183,7 +183,7 @@ namespace VitDeck.Validator
             => (VRC_EventHandler.VrcEventType[])Enum.GetValues(typeof(VRC_EventHandler.VrcEventType));
 #endif
 
-        protected int VRCTriggerCountLimit => 10;
+        protected int VRCTriggerCountLimit => 13;
 
         protected int LightmapCountLimit => 1;
 
