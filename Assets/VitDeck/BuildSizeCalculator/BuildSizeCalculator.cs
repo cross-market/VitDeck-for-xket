@@ -1,12 +1,9 @@
-using System.Threading.Tasks;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
+using System;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using SpottedZebra.UnitySizeExplorer.WPF.ViewModels.Pages;
+using UnityEditor.Build.Reporting;
 using VitDeck.Utilities;
 
 namespace VitDeck.BuildSizeCalculator
@@ -16,20 +13,12 @@ namespace VitDeck.BuildSizeCalculator
     /// </summary>
     public class BuildSizeCalculator : ScriptableWizard
     {
+        private static readonly string LastBuildReportPath = "Library/LastBuild.buildreport";
+
         /// <summary>
         /// メニューの表示項目の接頭辞。
         /// </summary>
         private const string Prefix = "VitDeck/";
-
-        /// <summary>
-        /// <see cref="Application.consoleLogPath"/>を後ろから何バイトずつ読み込むか。
-        /// </summary>
-        private static readonly int BufferSize = 1024;
-
-        /// <summary>
-        /// <see cref="Application.consoleLogPath"/>を後ろから読み込み、ヒットしたら読み込む終了とする文字。
-        /// </summary>
-        private static readonly string BuildSizeSectionStartPattern = "Bundle Name: customscene.vrcw";
 
         [SerializeField]
         private DefaultAsset baseFolder;
@@ -68,7 +57,7 @@ namespace VitDeck.BuildSizeCalculator
             UserSettingUtility.SaveUserSettings(userSettings);
         }
 
-        private async Task OnWizardCreate()
+        private void OnWizardCreate()
         {
             this.SaveSettings();
 
@@ -78,9 +67,14 @@ namespace VitDeck.BuildSizeCalculator
                 return;
             }
 
+
             this.Build();
 
-            EditorUtility.DisplayDialog("VitDeck", $"{AssetDatabase.GetAssetPath(this.baseFolder)} のビルドサイズは {await this.Calculate()} MB です。", "OK");
+            EditorUtility.DisplayDialog(
+                "VitDeck",
+                $"{this.GetScenePath()} のビルドサイズは {this.Calculate() / Math.Pow(2, 20):0.00} MiB です。",
+                "OK"
+            );
         }
 
         /// <summary>
@@ -116,7 +110,7 @@ namespace VitDeck.BuildSizeCalculator
         }
 
         /// <summary>
-        /// VRChat SDKを利用してワールドをビルドし、<see cref="Application.consoleLogPath"/>へビルドサイズを出力させます。
+        /// VRChat SDKを利用してワールドをビルドし、「Library/LastBuild.buildreport」へビルドレポートを出力させます。
         /// </summary>
         private void Build()
         {
@@ -129,36 +123,17 @@ namespace VitDeck.BuildSizeCalculator
         }
 
         /// <summary>
-        /// <see cref="Application.consoleLogPath"/>を解析し、ベースフォルダのビルド容量を計算します。
+        /// 「Library/LastBuild.buildreport」から、合計容量を取得して返します。
         /// </summary>
-        /// <returns>MB単位の容量を返します。</returns>
-        private async Task<float> Calculate()
+        /// <returns>合計バイト数を返します。</returns>
+        private float Calculate()
         {
-            var content = "";
-            using (var fileStream
-                = new FileStream(Application.consoleLogPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-            {
-                var bytes = new List<byte>();
-                fileStream.Seek(-BuildSizeCalculator.BufferSize, SeekOrigin.End);
-                while (!content.Contains(BuildSizeCalculator.BuildSizeSectionStartPattern))
-                {
-                    var buffer = new byte[BuildSizeCalculator.BufferSize];
-                    await fileStream.ReadAsync(buffer, 0, BuildSizeCalculator.BufferSize);
-                    bytes.InsertRange(0, buffer);
-                    content = Encoding.UTF8.GetString(bytes.ToArray());
-                    fileStream.Seek(-2 * BuildSizeCalculator.BufferSize, SeekOrigin.Current);
-                }
-            }
+            var buildResultPath = "Assets/VitDeck/Temporary/" + Path.GetFileName(BuildSizeCalculator.LastBuildReportPath);
 
-            var baseFolderPath = AssetDatabase.GetAssetPath(this.baseFolder);
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
-            {
-                return (await FileBuilder.FromStream(stream))
-                    .GroupBy(pathSizePair => pathSizePair.Item1, pathSizePair => pathSizePair.Item2)
-                    .ToDictionary(pathSizesPair => pathSizesPair.Key, pathSizesPair => pathSizesPair.First())
-                    .Where(pathSizePair => pathSizePair.Key.StartsWith(baseFolderPath))
-                    .Sum(pathSizePair => pathSizePair.Value);
-            }
+            File.Copy(BuildSizeCalculator.LastBuildReportPath, buildResultPath, overwrite: true);
+            AssetDatabase.ImportAsset(buildResultPath);
+
+            return AssetDatabase.LoadAssetAtPath<BuildReport>(buildResultPath).summary.totalSize;
         }
     }
 }
