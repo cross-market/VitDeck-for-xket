@@ -18,8 +18,8 @@ namespace VitDeck.Main
 
         private static readonly Regex IgnorePattern = new Regex(@"^Assets/VitDeck/(
             Main/ToolExporter\.cs
-            |Temporary
-            |.+/Tests/.+|
+            |Temporary(/.+)?
+            |.+/Tests/.+
             |TestUtilities(/.+)?
             |Templates/Sample_template(/.+)?
             |Validator/Rules/(Sample(/.+)?|Vket5/.+RuleSet\.cs)
