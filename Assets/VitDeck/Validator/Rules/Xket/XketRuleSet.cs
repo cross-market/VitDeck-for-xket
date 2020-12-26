@@ -157,6 +157,10 @@ namespace VitDeck.Validator
                     // <https://noriben.booth.pm/items/1205481>
                     { "Noriben/CircleLED", "5f94a00059794d8469e1ec8b94e48a09" },
                     { "Noriben/FlowLED", "bc6048cc78f66194a8e162f2d79ba974" },
+                    // NamakoXket2Shader.unitypackage
+                    // <https://drive.google.com/file/d/1jXZ1_5cMLh2Vu0144ZCwlMtRAunMfHS4/view>
+                    { "Namako/Xket2/Dissolve", "0b3dbe8007dd0d749a3e8cf6c66f28bd" },
+                    { "Namako/Xket2/VertColor", "cec8b6ff2c6ebb94b98082fdced52a6e" },
                 }, "ブース入稿規定の使用可能シェーダーをご参照ください。", "https://id.pokemori.jp/cross-market2/#shaders"),
 #endif
             };
