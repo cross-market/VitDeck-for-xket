@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a424079e73ca2ce4e91c6c9f0d62cf81, type: 3}
   m_Name: ProductInfo
   m_EditorClassIdentifier: 
-  version: 2.2.0
+  version: 2.3.0
   developerLinkTitle: VitDeck Xket2 Custom
   developerLinkURL: https://github.com/cross-market/VitDeck-for-xket
