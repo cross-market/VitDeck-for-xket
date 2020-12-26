@@ -161,6 +161,10 @@ namespace VitDeck.Validator
                     // <https://drive.google.com/file/d/1jXZ1_5cMLh2Vu0144ZCwlMtRAunMfHS4/view>
                     { "Namako/Xket2/Dissolve", "0b3dbe8007dd0d749a3e8cf6c66f28bd" },
                     { "Namako/Xket2/VertColor", "cec8b6ff2c6ebb94b98082fdced52a6e" },
+                    // noribenQuestWaterシェーダー
+                    // <https://noriben.booth.pm/items/1671087>
+                    { "Noriben/DepthWater", "b05e8486f2188774296b0e7fecc5ca33" },
+                    { "Noriben/noribenQuestWaterCubemap", "4660d9c95eb9e14448132e3c6060918b" },
                 }, "ブース入稿規定の使用可能シェーダーをご参照ください。", "https://id.pokemori.jp/cross-market2/#shaders"),
 #endif
             };
