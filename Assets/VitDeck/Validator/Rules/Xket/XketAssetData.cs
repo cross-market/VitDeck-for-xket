@@ -6,6 +6,63 @@ namespace VitDeck.Validator
     {
         public static string[] GUIDs = Vket5OfficialAssetData.GUIDs.Concat(new[]
         {
+            #region ゲーミング波紋シェーダー
+            "12d05ea3116dd364cb401c318a753912",
+            "50ce8b1b6d9112243aaf6fb4e39635f5",
+            "a8380f17eb815f740b8f070b0af2edaa",
+            "92e4b24d71db4e946a2fbbf4ab519c4d",
+            "f37658f453acdef42be51fc5a26d9bb2",
+            "e78e27bb74f7ba34cbfc1b6bcc5fb67d",
+            "6ae273697d288074d9257f8a66afd052",
+            "e4e7c92103289a04db55f7cd35ea7f3f",
+            "b05e8486f2188774296b0e7fecc5ca33",
+            "4660d9c95eb9e14448132e3c6060918b",
+            "27798e884c23c71419c98c6c2053ddb8",
+            "4e316c84b6113124585c49b7601495c1",
+            "eacfe4d521dedb943ad40be45ad37414",
+            "8c235d73d794d7240ae0e60873593580",
+            "c8c2befe2310980488c5b12442951599",
+            #endregion
+
+            #region NamakoXket2Shader.unitypackage
+            "6e06ec2e5359bc044a2187d0071d3dba",
+            "10fec87cd50d79c4c8fcc04d81d74141",
+            "4709c495f53a23d4fae32ab452cda011",
+            "30d609dc4d65be34599e9cb0a9df6dff",
+            "e3c24b0000abac044ae1aab455d7256a",
+            "ef66e9958b88aae4aaeae069759a20a8",
+            "c06303d38bec91b4a9f4577574371eb3",
+            "eceaa9f87b7c73745b543355917bd7ce",
+            "cd3be97009175464e906dbca1a60c7ac",
+            "2bad451a64f7a7f41a4271dbeec9f1fe",
+            "1fe14209bb3638d40a8ea3d902a08387",
+            "a218b31773bba334290791f447e9fbbf",
+            "8affc986b6861b44b89ee55df9ef018e",
+            "4889730dec3cad9428dd5467e31f1adf",
+            "9c03ee8d35db3f2408e6491c64becebf",
+            "0b3dbe8007dd0d749a3e8cf6c66f28bd",
+            "cec8b6ff2c6ebb94b98082fdced52a6e",
+            #endregion
+
+            #region noribenQuestWaterシェーダー
+            "12d05ea3116dd364cb401c318a753912",
+            "50ce8b1b6d9112243aaf6fb4e39635f5",
+            "a8380f17eb815f740b8f070b0af2edaa",
+            "92e4b24d71db4e946a2fbbf4ab519c4d",
+            "f37658f453acdef42be51fc5a26d9bb2",
+            "e78e27bb74f7ba34cbfc1b6bcc5fb67d",
+            "6ae273697d288074d9257f8a66afd052",
+            "e4e7c92103289a04db55f7cd35ea7f3f",
+            "b05e8486f2188774296b0e7fecc5ca33",
+            "4660d9c95eb9e14448132e3c6060918b",
+            "27798e884c23c71419c98c6c2053ddb8",
+            "4e316c84b6113124585c49b7601495c1",
+            "eacfe4d521dedb943ad40be45ad37414",
+            "8c235d73d794d7240ae0e60873593580",
+            "c8c2befe2310980488c5b12442951599",
+
+            #endregion
+
             #region text-template
             "02567ef9c767fa941a9cffaabc25c635",
             "d430eeeaf818b3544ad140d4c03d4e64",
