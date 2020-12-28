@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
@@ -128,6 +129,10 @@ namespace VitDeck.BuildSizeCalculator
         /// <returns>合計バイト数を返します。</returns>
         private float Calculate()
         {
+            if (!AssetDatabase.GetSubFolders("Assets/VitDeck").Contains("Temporary"))
+            {
+                AssetDatabase.CreateFolder("Assets/VitDeck", "Temporary");
+            }
             var buildResultPath = "Assets/VitDeck/Temporary/" + Path.GetFileName(BuildSizeCalculator.LastBuildReportPath);
 
             File.Copy(BuildSizeCalculator.LastBuildReportPath, buildResultPath, overwrite: true);
