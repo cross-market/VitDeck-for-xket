@@ -7,21 +7,15 @@ namespace VitDeck.Validator
         public static string[] GUIDs = Vket5OfficialAssetData.GUIDs.Concat(new[]
         {
             #region ゲーミング波紋シェーダー
-            "12d05ea3116dd364cb401c318a753912",
-            "50ce8b1b6d9112243aaf6fb4e39635f5",
-            "a8380f17eb815f740b8f070b0af2edaa",
-            "92e4b24d71db4e946a2fbbf4ab519c4d",
-            "f37658f453acdef42be51fc5a26d9bb2",
-            "e78e27bb74f7ba34cbfc1b6bcc5fb67d",
-            "6ae273697d288074d9257f8a66afd052",
-            "e4e7c92103289a04db55f7cd35ea7f3f",
-            "b05e8486f2188774296b0e7fecc5ca33",
-            "4660d9c95eb9e14448132e3c6060918b",
-            "27798e884c23c71419c98c6c2053ddb8",
-            "4e316c84b6113124585c49b7601495c1",
-            "eacfe4d521dedb943ad40be45ad37414",
-            "8c235d73d794d7240ae0e60873593580",
-            "c8c2befe2310980488c5b12442951599",
+            "678cdccda61385b4fa012a33b9183b53",
+            "837a3cbdac0378e43a33c8fe66d31250",
+            "0167df56538378a43b4a733f5a152d52",
+            "a02bed6b566d9164b9ed56ddb8889b22",
+            "59b5423c83501554080ddecda0d88400",
+            "f6344b557c865f740ba02e0ee82b60e8",
+            "5f94a00059794d8469e1ec8b94e48a09",
+            "bc6048cc78f66194a8e162f2d79ba974",
+
             #endregion
 
             #region NamakoXket2Shader.unitypackage
