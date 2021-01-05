@@ -49,6 +49,7 @@ namespace VitDeck.Validator
 
                 new ExhibitStructureRule(LocalizedMessage.Get("Vket5RuleSetBase.ExhibitStructureRule.Title")),
 
+                new SceneStructureRule("シーン構造ルール"),
                 new StaticFlagRule(LocalizedMessage.Get("Vket5RuleSetBase.StaticFlagsRule.Title")),
 
                 new AssetExtentionBlacklistRule("アセット拡張子ルール", new []{
