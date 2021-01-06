@@ -34,6 +34,8 @@ namespace VitDeck.Validator
 
                 new UnityVersionRule(LocalizedMessage.Get("Vket5RuleSetBase.UnityVersionRule.Title", "2018.4.20f1"), "2018.4.20f1"),
 
+                new VitDeckVersionRule("VitDeckバージョンルール"),
+
                 new BaseFolderPathRule(
                     "ベースフォルダパスルール",
                     new Regex("^Assets/2[01][0-9][0-9]$"),
