@@ -34,7 +34,10 @@ namespace VitDeck.Validator
 
                 new UnityVersionRule(LocalizedMessage.Get("Vket5RuleSetBase.UnityVersionRule.Title", "2018.4.20f1"), "2018.4.20f1"),
 
-                new VitDeckVersionRule("VitDeckバージョンルール"),
+                new VitDeckVersionRule(
+                    "VitDeckバージョンルール",
+                    "VitDeckメニューの「Info」から、アップデートが可能です。"
+                ),
 
                 new BaseFolderPathRule(
                     "ベースフォルダパスルール",
