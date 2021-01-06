@@ -16,6 +16,6 @@ MonoBehaviour:
   Description: "Assets/Xket2_Exports \u30D5\u30A9\u30EB\u30C0\u3078 unitypackage \u304C\u51FA\u529B\u3055\u308C\u307E\u3059\u3002\n\u51FA\u529B\u3055\u308C\u305F
     unitypackage \u3092\u5165\u7A3F\u30D5\u30A9\u30FC\u30E0\u304B\u3089\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
   ExportFolderPath: Assets/Xket2_Exports
-  fileNameFormat: CrossMarket2_{SHA-1}.unitypackage
+  fileNameFormat: CrossMarket2_{ID}_{DATETIME}.unitypackage
   ruleSetName: XketRuleSet
   ignoreValidationWarning: 0
